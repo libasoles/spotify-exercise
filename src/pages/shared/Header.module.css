@@ -1,0 +1,11 @@
+.header {
+  background: #0077cc;
+  color: white;
+  padding: 30px 40px;
+  height: 200px;
+  font-family: Roboto, sans-serif;
+}
+
+.logo {
+  max-width: 240px;
+}
