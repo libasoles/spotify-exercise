@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.item {
+  margin: 5px;
+}
+
+@media (min-width: 400px) {
+  .container {
+    justify-content: flex-start;
+  }
+}
