@@ -3,10 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@types/jest": "24.0.15",
-    "@types/node": "12.0.12",
-    "@types/react": "16.8.23",
-    "@types/react-dom": "16.8.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1",
@@ -16,7 +12,16 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:watch": "react-scripts test --watchAll",
+    "lint": "eslint './src/**/*.{ts,tsx}'",
+    "lint:fix": "npm run lint --fix",
     "eject": "react-scripts eject"
+  },
+  "husky": {
+    "hooks": {
+      "precommit": "lint-staged",
+      "pre-push": "npm test"
+    }
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -32,5 +37,19 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/jest": "24.0.15",
+    "@types/node": "12.0.12",
+    "@types/react": "^16.8.23",
+    "@types/react-dom": "16.8.4",
+    "@typescript-eslint/eslint-plugin": "^1.11.0",
+    "@typescript-eslint/parser": "^1.11.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-plugin-prettier": "^3.1.0",
+    "husky": "^3.0.0",
+    "lint-staged": "^9.0.2",
+    "prettier": "1.18.2"
   }
 }
