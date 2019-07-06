@@ -5,9 +5,10 @@ import "./App.css";
 import Home from "./pages/Home";
 import Header from "./pages/shared/Header";
 
+
 function App(): JSX.Element {
   return (
-    <div className="App">
+    <div className='app'>
       <Header />
       <Home />
     </div>

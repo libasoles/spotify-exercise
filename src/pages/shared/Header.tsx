@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import styles from "./Header.module.css";
-import Logo from "./Logo";
+import Logo from "./Header/Logo";
 
 function Header(): JSX.Element {
   return (

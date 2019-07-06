@@ -1,9 +1,12 @@
 import React from "react";
 
-import Page from "../components/Page";
-import Artists from "./shared/Artists";
+import Page from "../components/layout/Page";
+import Artists from "./shared/items/Artists";
 import * as artistsMock from "../resources/artists.json";
 import { ArtistData } from "../types/ArtistData";
+import SearchBox from "./shared/SearchBox";
+
+import styles from "./Home.module.css";
 
 function Home(): JSX.Element {
   const { items } = artistsMock.artists;
@@ -18,6 +21,7 @@ function Home(): JSX.Element {
 
   return (
     <Page>
+        <SearchBox/>
       <Artists list={artists} />
     </Page>
   );

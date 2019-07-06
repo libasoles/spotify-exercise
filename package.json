@@ -15,7 +15,7 @@
     "test": "react-scripts test",
     "test:watch": "react-scripts test --watchAll",
     "lint": "eslint './src/**/*.{ts,tsx}'",
-    "lint:fix": "npm run lint --fix",
+    "lint:fix": "npm run lint --silent -- --fix",
     "eject": "react-scripts eject"
   },
   "husky": {

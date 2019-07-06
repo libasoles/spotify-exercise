@@ -1,0 +1,12 @@
+.page {
+  margin: 10px 12px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 400px) {
+  .grid {
+    justify-content: flex-start;
+  }
+}

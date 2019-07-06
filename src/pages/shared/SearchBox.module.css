@@ -1,0 +1,66 @@
+.container {
+  width: 100%;
+  padding: 5px 15px;
+  background-color: #313131;
+  border-radius: 20px;
+  box-shadow: 0 0px 10px #ffffff, 0 0 0 5px #333333eb;
+  margin: 20px 0;
+  box-sizing: border-box;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.textBox {
+  width: 100%;
+}
+
+.input,
+.input:focus {
+  font-size: 20px;
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: none;
+  color: white;
+  box-sizing: border-box;
+}
+
+.input::placeholder {
+  color: #cecece;
+}
+
+.button {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+.circle {
+  width: 15px;
+  height: 15px;
+  border: 3px solid #fff;
+  background-color: transparent;
+  border-radius: 50%;
+  color: white;
+  display: block;
+}
+
+.tail {
+  width: 10px;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 10px;
+  transform: translate(12px, -2px) rotateZ(52deg);
+  display: block;
+}
+
+@media (min-width: 400px) {
+  .container {
+    width: 550px;
+  }
+}
