@@ -3,7 +3,7 @@ import * as React from "react";
 import styles from "./Page.module.css";
 
 interface Props {
-  children: any; //React.FunctionComponent | JSX.Element | string | null;
+  children: JSX.Element[] | JSX.Element | string;
   className?: string;
 }
 

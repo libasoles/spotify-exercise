@@ -2,21 +2,23 @@ import React from "react";
 
 import Page from "../components/Page";
 import Artists from "./shared/Artists";
-import Title from "../components/Title";
 import * as artistsMock from "../resources/artists.json";
-import styles from "./Home.module.css";
-import Link from "../components/Link";
+import { ArtistData } from "../types/ArtistData";
 
 function Home(): JSX.Element {
   const { items } = artistsMock.artists;
 
+  const artists = items.map(
+    (artist: any): ArtistData => ({
+      id: artist.id,
+      name: artist.name,
+      images: artist.images,
+    })
+  );
+
   return (
     <Page>
-      <Title className={styles.row}>Artists</Title>
-      <Artists list={items} />
-      <Link to={"/artists"} className={styles.row}>
-        See more
-      </Link>
+      <Artists list={artists} />
     </Page>
   );
 }

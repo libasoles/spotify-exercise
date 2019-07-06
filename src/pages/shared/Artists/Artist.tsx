@@ -1,8 +1,9 @@
 import * as React from "react";
-import { ItemProps } from "../../../components/Item";
+import { ItemProps } from "../../../components/ItemsGrid";
+import { ArtistData } from "../../../types/ArtistData";
 
 interface Props {
-  data: any;
+  data: ArtistData;
   className: string;
 }
 

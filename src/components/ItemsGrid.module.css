@@ -1,0 +1,21 @@
+.row {
+  margin: 5px;
+  display: block;
+  text-align: center;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.item {
+  margin: 5px;
+}
+
+@media (min-width: 400px) {
+  .grid {
+    justify-content: flex-start;
+  }
+}

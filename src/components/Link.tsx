@@ -3,7 +3,7 @@ import * as React from "react";
 import styles from "./Link.module.css";
 
 interface Props {
-  children: any;
+  children: JSX.Element[] | JSX.Element | string;
   to: string;
   className: string;
 }
