@@ -2,12 +2,19 @@ import * as React from "react";
 
 import styles from "./SearchBox.module.css";
 
-interface Props {}
+interface Props {
+  onSearch: (term: string) => void;
+}
 
-function SearchBox({  }: Props): JSX.Element {
+function SearchBox({ onSearch }: Props): JSX.Element {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    onSearch(e.target.value);
+  };
+
   return (
     <div className={styles.container}>
-      <form method="get" action="">
+      <form>
         <div className={styles.content}>
           <div className={styles.textBox}>
             <input
@@ -15,6 +22,7 @@ function SearchBox({  }: Props): JSX.Element {
               placeholder="Search"
               required
               className={styles.input}
+              onChange={onChange}
             />
           </div>
           <button type="submit" className={styles.button}>
