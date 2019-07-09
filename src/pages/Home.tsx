@@ -6,7 +6,7 @@ import SearchBox from "./shared/SearchBox";
 import useSearch from "./useSearch";
 
 function Home(): JSX.Element {
-  const { searchTerm, results } = useSearch();
+  const { searchTerm, results } = useSearch({});
 
   return (
     <Page>

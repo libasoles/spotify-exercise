@@ -3,31 +3,48 @@ import { useEffect, useState } from "react";
 import api from "../services/api";
 import { ArtistData } from "../types/ArtistData";
 import { serializeArtists } from "../serializers/artists";
+import useDebounce from "../services/useDebounce";
 
-function useSearch(fetch = api) {
-  const initialState: {
-    artists: ArtistData[];
-  } = {
-    artists: [],
-  };
+interface initialStateShape {
+  artists: ArtistData[];
+}
+
+const initialState: initialStateShape = {
+  artists: [],
+};
+
+interface useSearchParams {
+  fetch?: any;
+  serializeArtistsData?: (items: []) => ArtistData[];
+}
+
+function useSearch({
+  fetch = api,
+  serializeArtistsData = serializeArtists,
+}: useSearchParams) {
   const [term, searchTerm] = useState("");
   const [results, setResults] = useState(initialState);
 
+  const debouncedTerm = useDebounce(term, 500);
+
   useEffect(() => {
-    if (!term) return;
+    if (!debouncedTerm) {
+      setResults(initialState);
+    }
 
     fetch
       .get("/search", {
         params: {
-          q: term,
+          q: debouncedTerm,
           type: "artist,track",
         },
       })
-      .then(({ data }) => {
-        const artists = serializeArtists(data.artists.items);
+      .then(({ data }: { data: any }) => {
+        const artists = serializeArtistsData(data.artists.items);
+
         setResults({ artists });
       });
-  }, [term, fetch]);
+  }, [debouncedTerm, fetch]);
 
   return { results, searchTerm };
 }
