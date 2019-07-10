@@ -1,15 +1,15 @@
 import * as React from "react";
 import { ItemProps } from "../../../../components/layout/ItemsGrid";
-import { ArtistData } from "../../../../types/ArtistData";
+import { AlbumData } from "../../../../types/AlbumData";
 import noImage from "../../../../resources/NoImageFound.png";
 import Picture from "../../../../components/Picture";
 
 interface Props {
-  data: ArtistData;
+  data: AlbumData;
   className: string;
 }
 
-function Artist({ data, className }: ItemProps | Props): JSX.Element {
+function Album({ data, className }: ItemProps | Props): JSX.Element {
   const { images } = data;
 
   const image = images.length ? images[0].url : noImage;
@@ -21,4 +21,4 @@ function Artist({ data, className }: ItemProps | Props): JSX.Element {
   );
 }
 
-export default Artist;
+export default Album;

@@ -9,4 +9,9 @@ function If({ condition, children }: Props): JSX.Element {
   return <>{condition && children}</>;
 }
 
+function IfNot({ condition, children }: Props): JSX.Element {
+  return <>{!condition && children}</>;
+}
+
 export default If;
+export { IfNot };

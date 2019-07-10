@@ -1,24 +1,23 @@
 import * as React from "react";
 
-import Artist from "./Artists/Artist";
 import ItemsGrid from "../../../components/layout/ItemsGrid";
 import { ArtistData } from "../../../types/ArtistData";
+import Album from "./Albums/Album";
 
 interface Props {
   list: ArtistData[];
 }
 
-function Artists({ list }: Props): JSX.Element {
+function Albums({ list }: Props): JSX.Element {
   return (
     <div>
       <ItemsGrid
-        title="Artists"
+        title="Albums"
         list={list}
-        Recipient={Artist}
-        link={{ copy: "See more", to: "/artists" }}
+        Recipient={Album}
       />
     </div>
   );
 }
 
-export default Artists;
+export default Albums;

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
-import api from "../services/api";
-import { ArtistData } from "../types/ArtistData";
-import { serializeArtists } from "../serializers/artists";
-import useDebounce from "../services/useDebounce";
+import api from "../../services/api";
+import { ArtistData } from "../../types/ArtistData";
+import { serializeArtists } from "../../serializers/artists";
+import useDebounce from "../../services/useDebounce";
 
 interface initialStateShape {
   artists: ArtistData[];

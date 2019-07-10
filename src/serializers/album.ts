@@ -1,7 +1,7 @@
-import { ArtistData } from "../types/ArtistData";
+import { AlbumData } from "../types/AlbumData";
 import config from "../config";
 
-function serializeArtist(artist: any): ArtistData {
+function serializeAlbum(artist: any): AlbumData {
   return {
     id: artist.id,
     name: artist.name,
@@ -12,8 +12,8 @@ function serializeArtist(artist: any): ArtistData {
   };
 }
 
-function serializeArtists(items: any): ArtistData[] {
-  return items.map(serializeArtist);
+function serializeAlbums(items: any): AlbumData[] {
+  return items.map(serializeAlbum);
 }
 
-export { serializeArtist, serializeArtists };
+export { serializeAlbum, serializeAlbums };
