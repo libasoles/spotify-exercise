@@ -7,9 +7,16 @@ const api = axios.create({
   headers: {
     "Cache-Control": "no-cache",
     Accept: "application/json",
-    Authorization:
-      "Bearer BQA_rut9muyttreTgEe6tyqc03l-BYe8x4-4r7CxUkdPszZdWUjenGQ17qWfyd-EoqjRqbU6oGEbZVljHLA",
   },
 });
 
+function setToken(token: string, client: any = api): void {
+  client.interceptors.request.use(function(config: any) {
+    config.headers.Authorization = token ? `Bearer ${token}` : "";
+
+    return config;
+  });
+}
+
 export default api;
+export { setToken };
