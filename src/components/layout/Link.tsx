@@ -5,7 +5,7 @@ import styles from "./Link.module.css";
 interface Props {
   children: JSX.Element[] | JSX.Element | string;
   to: string;
-  className: string;
+  className?: string;
 }
 
 function Link({ to, children, className }: Props): JSX.Element {

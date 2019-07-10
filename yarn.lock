@@ -8385,6 +8385,11 @@ react-is@^16.8.1, react-is@^16.8.4:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
   integrity sha512-aUk3bHfZ2bRSVFFbbeVS4i+lNPZr3/WM5jT2J5omUVV1zzcs1nAaf3l51ctA5FFvCRbhrH0bdAsRRQddFJZPtA==
 
+react-masonry-css@^1.0.12:
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/react-masonry-css/-/react-masonry-css-1.0.12.tgz#e252a74c0e6d5272f759588232487d707608298a"
+  integrity sha512-tDO4dJugSLorlsqZ7WD/yW+OGIWFhUdrSv3VeGYOaFwqwwYwdcXOHh/rsu1PItb/kkmA8iQmpVcweKcZ6RIjmQ==
+
 react-scripts@3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/react-scripts/-/react-scripts-3.0.1.tgz#e5565350d8069cc9966b5998d3fe3befe3d243ac"

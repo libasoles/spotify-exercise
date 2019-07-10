@@ -6,6 +6,7 @@
   box-shadow: 0 0px 10px #ffffff, 0 0 0 5px #333333eb;
   margin: 20px 0;
   box-sizing: border-box;
+  transition: all 1s ease-in;
 }
 
 .content {

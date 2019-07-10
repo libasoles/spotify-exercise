@@ -4,11 +4,13 @@ import "normalize.css";
 import "./App.css";
 import Home from "./pages/Home";
 import Header from "./pages/shared/Header";
+import login from "./services/auth";
 
+login();
 
 function App(): JSX.Element {
   return (
-    <div className='app'>
+    <div className="app">
       <Header />
       <Home />
     </div>

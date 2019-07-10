@@ -1,9 +1,14 @@
 import * as React from "react";
 
 import styles from "./SearchBox.module.css";
+import { FormEvent } from "react";
 
 interface Props {
   onSearch: (term: string) => void;
+}
+
+function noAction(e: FormEvent) {
+  e.preventDefault();
 }
 
 function SearchBox({ onSearch }: Props): JSX.Element {
@@ -14,7 +19,7 @@ function SearchBox({ onSearch }: Props): JSX.Element {
 
   return (
     <div className={styles.container}>
-      <form>
+      <form onSubmit={noAction}>
         <div className={styles.content}>
           <div className={styles.textBox}>
             <input

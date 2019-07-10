@@ -30,6 +30,7 @@ function useSearch({
   useEffect(() => {
     if (!debouncedTerm) {
       setResults(initialState);
+      return;
     }
 
     fetch
@@ -44,7 +45,7 @@ function useSearch({
 
         setResults({ artists });
       });
-  }, [debouncedTerm, fetch]);
+  }, [debouncedTerm, fetch, serializeArtistsData]);
 
   return { results, searchTerm };
 }
