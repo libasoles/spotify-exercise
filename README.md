@@ -12,6 +12,14 @@ Running on node 10.15
 
 ![screenshot](https://github.com/libasoles/spotify-exercise/blob/master/screenShots/Screenshot.png)
 
+## Credentials
+
+You will need a Bearer accessToken to run the demo. Set it in config.ts
+
+This is because the demo doesn't include an authentication process.
+
+And of course, in real life this token would be provided by a server side layer, but there's no backend in this demo. And I'm actually calling the API through a public proxy.
+
 ## How to run
 Install packages and run as usual: 
 
