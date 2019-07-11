@@ -5,10 +5,11 @@ import Artists from "./shared/items/Artists";
 import SearchBox from "./shared/SearchBox";
 import useSearch from "./Home/useSearch";
 import If, { IfNot } from "../components/If";
-import NoResults from "./shared/NoResults";
+import NoResults from "./shared/SearchBox/NoResults";
+import Loading from "./shared/SearchBox/Loading";
 
 function Home(): JSX.Element {
-  const { searchTerm, results } = useSearch({});
+  const { loading, searchTerm, results } = useSearch({});
   const { artists } = results;
 
   const hasArtists = artists.length > 0;
@@ -16,10 +17,16 @@ function Home(): JSX.Element {
   return (
     <Page>
       <SearchBox onSearch={searchTerm} />
-      <If condition={hasArtists}>
+
+      <If condition={loading}>
+        <Loading />
+      </If>
+
+      <If condition={!loading && hasArtists}>
         <Artists list={artists} />
       </If>
-      <IfNot condition={hasArtists}>
+
+      <IfNot condition={loading || hasArtists}>
         <NoResults />
       </IfNot>
     </Page>

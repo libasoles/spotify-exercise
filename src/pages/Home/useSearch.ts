@@ -22,14 +22,21 @@ function useSearch({
   fetch = api,
   serializeArtistsData = serializeArtists,
 }: useSearchParams) {
-  const [term, searchTerm] = useState("");
+  const [term, search] = useState("");
   const [results, setResults] = useState(initialState);
+  const [loading, setLoading] = useState(false);
 
   const debouncedTerm = useDebounce(term, 500);
+
+  const searchTerm = (term: string) => {
+    setLoading(true);
+    search(term);
+  };
 
   useEffect(() => {
     if (!debouncedTerm) {
       setResults(initialState);
+      setLoading(false);
       return;
     }
 
@@ -44,10 +51,11 @@ function useSearch({
         const artists = serializeArtistsData(data.artists.items);
 
         setResults({ artists });
+        setLoading(false);
       });
-  }, [debouncedTerm, fetch, serializeArtistsData]);
+  }, [debouncedTerm, fetch, setLoading, serializeArtistsData]);
 
-  return { results, searchTerm };
+  return { loading, results, searchTerm };
 }
 
 export default useSearch;

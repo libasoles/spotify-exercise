@@ -4,7 +4,7 @@
   background-color: #313131;
   border-radius: 20px;
   box-shadow: 0 0px 10px #ffffff, 0 0 0 5px #333333eb;
-  margin: 20px 0;
+  margin: 20px auto;
   box-sizing: border-box;
   transition: all 1s ease-in;
 }
