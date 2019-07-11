@@ -7,7 +7,8 @@ import { RouteComponentProps } from "react-router";
 import useFetchAlbums from "./Artist/useFetchAlbums";
 import Picture from "../components/Picture";
 import Albums from "./shared/items/Albums";
-import If from "../components/If";
+import If, { IfNot } from "../components/If";
+import NoResults from "./shared/SearchBox/NoResults";
 
 interface Props {
   data: ArtistData;
@@ -20,15 +21,23 @@ function Artist({ data, match }: Parameters): JSX.Element {
   const { id } = match.params;
   const artist = useFetchArtist({ id });
   const albums = useFetchAlbums({ id });
+  const image =
+    artist.images && artist.images.length > 0 ? artist.images[0].url : '';
+  const hasAlbums = albums.length > 0;
 
   return (
     <Page>
       <div>
         <h1>{artist.name}</h1>
-        <Picture src={artist.images[0].url} alt={artist.name} />
-        <If condition={albums.length > 0}>
+        <If condition={image}>
+          <Picture src={image} alt={artist.name} />
+        </If>
+        <If condition={hasAlbums}>
           <Albums list={albums} />
         </If>
+        <IfNot condition={hasAlbums}>
+          <NoResults />
+        </IfNot>
       </div>
     </Page>
   );

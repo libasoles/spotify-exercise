@@ -23,7 +23,7 @@ function useFetchArtist({ id, fetch = api }: useFetchArtistParams) {
 
       setArtist(artist);
     });
-  }, [id]);
+  }, [id, fetch]);
 
   return artist;
 }

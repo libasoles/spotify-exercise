@@ -7,10 +7,11 @@ import useSearch from "./Home/useSearch";
 import If, { IfNot } from "../components/If";
 import NoResults from "./shared/SearchBox/NoResults";
 import Loading from "./shared/SearchBox/Loading";
+import Tracks from "./shared/items/Tracks";
 
 function Home(): JSX.Element {
   const { loading, searchTerm, results } = useSearch({});
-  const { artists } = results;
+  const { artists, tracks } = results;
 
   const hasArtists = artists.length > 0;
 
@@ -23,6 +24,7 @@ function Home(): JSX.Element {
       </If>
 
       <If condition={!loading && hasArtists}>
+        <Tracks list={tracks} />
         <Artists list={artists} />
       </If>
 

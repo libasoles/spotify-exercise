@@ -18,7 +18,7 @@ function useFetchAlbums({ id, fetch = api }: useFetchAlbumsParams) {
       const albums = serializeAlbums(data.items);
       setAlbums(albums);
     });
-  }, [id]);
+  }, [id, fetch]);
 
   return albums;
 }

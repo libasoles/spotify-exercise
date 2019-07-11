@@ -1,0 +1,37 @@
+.row {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  padding: 0 5px;
+}
+
+.column {
+  text-align: left;
+  flex: 1 1;
+}
+
+.right {
+  text-align: right;
+}
+
+.small {
+  flex: 0 0 50px;
+}
+
+@media (max-width: 500px) {
+  .row {
+    flex-direction: column;
+  }
+
+  .button {
+    margin: 10px 0 10px -5px;
+  }
+
+  .noMobile {
+    display: none;
+  }
+
+  .small {
+    flex: 1 1;
+  }
+}

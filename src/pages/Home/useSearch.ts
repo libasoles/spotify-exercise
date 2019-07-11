@@ -4,13 +4,17 @@ import api from "../../services/api";
 import { ArtistData } from "../../types/ArtistData";
 import { serializeArtists } from "../../serializers/artists";
 import useDebounce from "../../services/useDebounce";
+import { serializeTracks } from "../../serializers/track";
+import { TrackData } from "../../types/TrackData";
 
 interface initialStateShape {
   artists: ArtistData[];
+  tracks: TrackData[];
 }
 
 const initialState: initialStateShape = {
   artists: [],
+  tracks: [],
 };
 
 interface useSearchParams {
@@ -18,10 +22,7 @@ interface useSearchParams {
   serializeArtistsData?: (items: []) => ArtistData[];
 }
 
-function useSearch({
-  fetch = api,
-  serializeArtistsData = serializeArtists,
-}: useSearchParams) {
+function useSearch({ fetch = api }: useSearchParams) {
   const [term, search] = useState("");
   const [results, setResults] = useState(initialState);
   const [loading, setLoading] = useState(false);
@@ -48,12 +49,13 @@ function useSearch({
         },
       })
       .then(({ data }: { data: any }) => {
-        const artists = serializeArtistsData(data.artists.items);
+        const artists = serializeArtists(data.artists.items);
+        const tracks = serializeTracks(data.tracks.items);
 
-        setResults({ artists });
+        setResults({ artists, tracks });
         setLoading(false);
       });
-  }, [debouncedTerm, fetch, setLoading, serializeArtistsData]);
+  }, [debouncedTerm, fetch, setLoading]);
 
   return { loading, results, searchTerm };
 }

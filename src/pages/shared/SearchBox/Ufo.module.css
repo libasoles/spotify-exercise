@@ -4,7 +4,7 @@
   --color: #7e868c;
   --lineColor: #bdc5cb;
   transition: all 1s linear;
-  animation: fadein 2s;
+  animation: fadein 3s;
 }
 
 .container.pink {

@@ -1,11 +1,11 @@
 import { AlbumData } from "../types/AlbumData";
 import config from "../config";
 
-function serializeAlbum(artist: any): AlbumData {
+function serializeAlbum(album: any): AlbumData {
   return {
-    id: artist.id,
-    name: artist.name,
-    images: artist.images.filter(
+    id: album.id,
+    name: album.name,
+    images: album.images.filter(
       (image: { width: number }) =>
         image.width >= config.mimImageSize && image.width <= config.maxImageSize
     ),

@@ -1,0 +1,31 @@
+.box {
+  width: 20px;
+  height: 16px;
+  border: none;
+  outline: none;
+  background: none;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.button {
+  cursor: pointer;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.play {
+  border-top: 8px solid transparent;
+  border-left: 12px solid #ffffff;
+  border-bottom: 8px solid transparent;
+}
+
+.pause {
+  border: none;
+  border-right: 4px solid #ffffff;
+  border-left: 4px solid #ffffff;
+  padding: 2px;
+  width: 1px;
+  height: 12px;
+}
