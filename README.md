@@ -10,7 +10,7 @@ It's a demo project using _Spotify_ API.
 
 Running on node 10.15
 
-![screenshot](https://github.com/libasoles/spotify-exercise/screenShots/Screenshot.png)
+![screenshot](https://github.com/libasoles/spotify-exercise/blob/master/screenShots/Screenshot.png)
 
 ## How to run
 Install packages and run as usual: 
@@ -30,3 +30,7 @@ docker-compose exec spotifive yarn start
 
 Finally
 `docker-compose down`
+
+## Demo
+
+![Demo](https://github.com/libasoles/spotify-exercise/blob/master/screenShots/FullscreeDemo.gif)
