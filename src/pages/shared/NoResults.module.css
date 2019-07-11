@@ -3,6 +3,15 @@
     --color: #7e868c;
 }
 
+.ufo {
+    animation: MoveUpDown 1s linear infinite alternate;
+}
+
+@keyframes MoveUpDown {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+}
+
 .loader {
     --dot: #0077CC;
     --duration: 3s;

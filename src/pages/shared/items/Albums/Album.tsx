@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ItemProps } from "../../../../components/layout/ItemsGrid";
 import { AlbumData } from "../../../../types/AlbumData";
-import noImage from "../../../../resources/NoImageFound.png";
+import noImage from "../../../../assets/NoImageFound.png";
 import Picture from "../../../../components/Picture";
 
 interface Props {
