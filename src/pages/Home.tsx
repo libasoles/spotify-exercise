@@ -14,6 +14,7 @@ function Home(): JSX.Element {
   const { loading, searchTerm, results } = useSearch({});
   const { artists, tracks } = results;
 
+  const hasTracks = tracks.length > 0;
   const hasArtists = artists.length > 0;
 
   return (
@@ -24,8 +25,11 @@ function Home(): JSX.Element {
         <Loading />
       </If>
 
-      <If condition={!loading && hasArtists}>
+      <If condition={!loading && hasTracks}>
         <Tracks list={tracks} className={styles.tracks} />
+      </If>
+
+      <If condition={!loading && hasArtists}>
         <Artists list={artists} />
       </If>
 

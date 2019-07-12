@@ -16,8 +16,8 @@ function serializeTrack(track: any): TrackData {
 }
 
 function serializeTracks(items: any, onlyPlayable = false): TrackData[] {
-  if (onlyPlayable)
-    items = items.filter((track: TrackData) => track.previewUrl);
+    if (onlyPlayable)
+    items = items.filter((track: any): boolean => Boolean(track.preview_url));
 
   return items.map(serializeTrack);
 }

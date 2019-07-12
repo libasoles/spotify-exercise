@@ -8,7 +8,7 @@ interface Props {
   recipient: GridRecipientType;
 }
 
-function Grid({ list, recipient }: Props): JSX.Element {
+function Grid<T>({ list, recipient }: Props): JSX.Element {
   const masonryColumns = {
     default: 5,
     1100: 2,
@@ -23,7 +23,7 @@ function Grid({ list, recipient }: Props): JSX.Element {
       columnClassName={styles.masonryGridColumn}
     >
       {list.map(
-        (item: any): JSX.Element => {
+        (item: T): JSX.Element => {
           return recipient({ data: item, className: styles.item });
         }
       )}

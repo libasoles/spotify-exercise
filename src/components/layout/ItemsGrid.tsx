@@ -13,21 +13,21 @@ export interface ItemProps {
   className: string;
 }
 
-interface Props {
+interface Props<T> {
   title?: string;
-  list: any;
+  list: T;
   recipient: GridRecipientType;
   link?: { copy: string; to?: string };
 }
 
 const noLink = { to: "", copy: "" };
 
-function ItemsGrid({
+function ItemsGrid<T>({
   title,
   list,
   recipient,
   link = noLink,
-}: Props): JSX.Element {
+}: Props<T>): JSX.Element {
   return (
     <section className={styles.container}>
       <If condition={title}>

@@ -1,7 +1,6 @@
 import * as React from "react";
 
 import styles from "./PlayPause.module.css";
-import { useState } from "react";
 
 interface Props {
   src: string;
