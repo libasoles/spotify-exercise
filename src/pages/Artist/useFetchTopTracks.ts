@@ -1,24 +1,33 @@
 import { useEffect, useState } from "react";
 import api from "../../services/api";
+import {serializeTracks} from "../../serializers/track";
+import {TrackData} from "../../types/TrackData";
 
 interface useFetchTopTracksParams {
   id: string;
   fetch?: any;
 }
 
+const country = navigator.language.slice(-2) || "US";
+
+const initialState: TrackData[] = [];
+
 function useFetchTopTracks({ id, fetch = api }: useFetchTopTracksParams) {
-  const [artist, setArtist] = useState();
+  const [tracks, setTracks] = useState(initialState);
 
   useEffect(() => {
     fetch
-      .get("/artists/" + id + "/top-tracks")
+      .get("/artists/" + id + "/top-tracks", {
+        params: {
+          country,
+        },
+      })
       .then(({ data }: { data: any }) => {
-
-        setArtist({ artist });
+        setTracks(serializeTracks(data.tracks));
       });
-  }, [id]);
+  }, [id, fetch]);
 
-  return artist;
+  return tracks;
 }
 
 export default useFetchTopTracks;

@@ -1,5 +1,6 @@
 import * as React from "react";
 import If from "./If";
+import styles from "./Picture.module.css";
 
 interface Props {
   src: string;
@@ -9,7 +10,7 @@ interface Props {
 
 export default function Picture({ src, alt, caption }: Props) {
   return (
-    <figure>
+    <figure className={styles.picture}>
       <img src={src} alt={alt} />
       <If condition={caption}>
         <figcaption>{caption}</figcaption>

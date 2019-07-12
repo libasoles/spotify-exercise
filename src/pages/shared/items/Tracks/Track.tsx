@@ -6,13 +6,15 @@ import PlayPause from "./PlayPause";
 import millisToTime from "../../../../helpers/millisToTime";
 import Link from "../../../../components/layout/Link";
 import { ArtistData } from "../../../../types/ArtistData";
+import If from "../../../../components/If";
 
 interface Props {
   data: TrackData;
   onPlay: (src: string | null) => void;
+  skipColumns?: string[];
 }
 
-function Track({ data, onPlay }: Props): JSX.Element {
+function Track({ data, onPlay, skipColumns }: Props): JSX.Element {
   return (
     <ul className={styles.row}>
       <li className={`${styles.column} ${styles.button} ${styles.small}`}>
@@ -20,16 +22,21 @@ function Track({ data, onPlay }: Props): JSX.Element {
       </li>
 
       <li className={styles.column}>{data.name}</li>
-      <li className={styles.column}>
-        {data.artists.map((artist: ArtistData) => (
-          <Link key={artist.id} to={`/artist/${artist.id}`}>
-            {artist.name}
-          </Link>
-        ))}
-      </li>
+
+      <If condition={!(skipColumns && skipColumns.includes("artists"))}>
+        <li className={styles.column}>
+          {data.artists.map((artist: ArtistData) => (
+            <Link key={artist.id} to={`/artist/${artist.id}`}>
+              {artist.name}
+            </Link>
+          ))}
+        </li>
+      </If>
+
       <li className={`${styles.column} ${styles.noMobile}`}>
         {data.album.name}
       </li>
+
       <li className={`${styles.column} ${styles.right} ${styles.small}`}>
         {millisToTime(data.duration_ms)}
       </li>

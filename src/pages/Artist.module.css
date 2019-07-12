@@ -1,0 +1,30 @@
+.details {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  order: -1;
+}
+
+@media (min-width: 980px) {
+  .header {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .details {
+    text-align: left;
+    margin-right: 70px;
+  }
+
+  .name {
+    order: 1;
+  }
+
+  .tracks {
+    flex: 1;
+    margin-top: -20px;
+  }
+}

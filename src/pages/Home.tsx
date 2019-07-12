@@ -8,6 +8,7 @@ import If, { IfNot } from "../components/If";
 import NoResults from "./shared/SearchBox/NoResults";
 import Loading from "./shared/SearchBox/Loading";
 import Tracks from "./shared/items/Tracks";
+import styles from "./Home.module.css";
 
 function Home(): JSX.Element {
   const { loading, searchTerm, results } = useSearch({});
@@ -24,7 +25,7 @@ function Home(): JSX.Element {
       </If>
 
       <If condition={!loading && hasArtists}>
-        <Tracks list={tracks} />
+        <Tracks list={tracks} className={styles.tracks}/>
         <Artists list={artists} />
       </If>
 

@@ -1,0 +1,9 @@
+.picture {
+  margin: 0;
+}
+
+.picture figcaption {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
