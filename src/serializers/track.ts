@@ -1,5 +1,5 @@
 import { TrackData } from "../types/TrackData";
-import {emptyAlbum, serializeAlbum} from "./album";
+import { emptyAlbum, serializeAlbum } from "./album";
 import { serializeArtist } from "./artists";
 
 function serializeTrack(track: TrackData): TrackData {
@@ -15,10 +15,11 @@ function serializeTrack(track: TrackData): TrackData {
   };
 }
 
-function serializeTracks(items: any): TrackData[] {
-  return items
-    .filter((track: TrackData) => track.preview_url)
-    .map(serializeTrack);
+function serializeTracks(items: any, onlyPlayable = false): TrackData[] {
+  if (onlyPlayable)
+    items = items.filter((track: TrackData) => track.preview_url);
+
+  return items.map(serializeTrack);
 }
 
 export { serializeTrack, serializeTracks };

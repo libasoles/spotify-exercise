@@ -14,6 +14,15 @@ interface Props {
   className?: string;
 }
 
+function useAutoPlay(currentTrack: string | null) {
+  const audio = useRef(new Player());
+  if (currentTrack) {
+    audio.current.play(currentTrack);
+  } else {
+    audio.current.stop();
+  }
+}
+
 function Tracks({
   title = "Tracks",
   list,
@@ -21,13 +30,7 @@ function Tracks({
   className,
 }: Props): JSX.Element {
   const [currentTrack, setCurrentTrack] = useState<string | null>(null);
-
-  const audio = useRef(new Player());
-  if (currentTrack) {
-    audio.current.play(currentTrack);
-  } else {
-    audio.current.stop();
-  }
+  useAutoPlay(currentTrack);
 
   return (
     <section className={`${styles.container} ${className}`}>

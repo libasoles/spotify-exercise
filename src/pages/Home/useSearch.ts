@@ -50,7 +50,7 @@ function useSearch({ fetch = api }: useSearchParams) {
       })
       .then(({ data }: { data: any }) => {
         const artists = serializeArtists(data.artists.items);
-        const tracks = serializeTracks(data.tracks.items);
+        const tracks = serializeTracks(data.tracks.items, true);
 
         setResults({ artists, tracks });
         setLoading(false);

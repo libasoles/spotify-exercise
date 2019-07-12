@@ -6,7 +6,7 @@ import PlayPause from "./PlayPause";
 import millisToTime from "../../../../helpers/millisToTime";
 import Link from "../../../../components/layout/Link";
 import { ArtistData } from "../../../../types/ArtistData";
-import If from "../../../../components/If";
+import If, { IfNot } from "../../../../components/If";
 
 interface Props {
   data: TrackData;
@@ -18,7 +18,12 @@ function Track({ data, onPlay, skipColumns }: Props): JSX.Element {
   return (
     <ul className={styles.row}>
       <li className={`${styles.column} ${styles.button} ${styles.small}`}>
-        <PlayPause src={data.preview_url} onPlay={onPlay} />
+        <If condition={data.preview_url}>
+          <PlayPause src={data.preview_url} onPlay={onPlay} />
+        </If>
+        <IfNot condition={data.preview_url}>
+          <span>-</span>
+        </IfNot>
       </li>
 
       <li className={styles.column}>{data.name}</li>

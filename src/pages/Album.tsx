@@ -54,12 +54,11 @@ function Album({ data, match }: Parameters): JSX.Element {
                 skipColumns={["artists", "album"]}
               />
             </If>
+            <IfNot condition={hasTracks}>
+              <Loading />
+            </IfNot>
           </section>
         </header>
-
-        <IfNot condition={hasTracks}>
-          <Loading />
-        </IfNot>
       </div>
     </Page>
   );
