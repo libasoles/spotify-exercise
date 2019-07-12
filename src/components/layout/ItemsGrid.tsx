@@ -16,7 +16,7 @@ export interface ItemProps {
 interface Props {
   title?: string;
   list: any;
-  Recipient: GridRecipientType;
+  recipient: GridRecipientType;
   link?: { copy: string; to?: string };
 }
 
@@ -25,7 +25,7 @@ const noLink = { to: "", copy: "" };
 function ItemsGrid({
   title,
   list,
-  Recipient,
+  recipient,
   link = noLink,
 }: Props): JSX.Element {
   return (
@@ -34,7 +34,7 @@ function ItemsGrid({
         <Title className={styles.row}>{title}</Title>
       </If>
 
-      <Grid list={list} Recipient={Recipient} />
+      <Grid list={list} recipient={recipient} />
 
       <If condition={link && link.to}>
         <Link to={link.to} className={styles.row}>

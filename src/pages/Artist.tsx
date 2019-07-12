@@ -8,7 +8,7 @@ import useFetchAlbums from "./Artist/useFetchAlbums";
 import Picture from "../components/Picture";
 import Albums from "./shared/items/Albums";
 import If, { IfNot } from "../components/If";
-import NoResults from "./shared/SearchBox/NoResults";
+import Loading from "./shared/SearchBox/Loading";
 import useFetchTopTracks from "./Artist/useFetchTopTracks";
 import Tracks from "./shared/items/Tracks";
 import styles from "./Artist.module.css";
@@ -57,7 +57,7 @@ function Artist({ data, match }: Parameters): JSX.Element {
         </If>
 
         <IfNot condition={hasAlbums}>
-          <NoResults />
+          <Loading />
         </IfNot>
       </div>
     </Page>
