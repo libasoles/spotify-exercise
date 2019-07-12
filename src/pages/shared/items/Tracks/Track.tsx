@@ -12,14 +12,26 @@ interface Props {
   data: TrackData;
   onPlay: (src: string | null) => void;
   skipColumns?: string[];
+  currentTrack: string | null;
 }
 
-function Track({ data, onPlay, skipColumns }: Props): JSX.Element {
+function Track({
+  data,
+  onPlay,
+  currentTrack,
+  skipColumns,
+}: Props): JSX.Element {
+  const isPlaying = currentTrack === data.previewUrl;
+
   return (
     <ul className={styles.row}>
       <li className={`${styles.column} ${styles.button} ${styles.small}`}>
         <If condition={data.previewUrl}>
-          <PlayPause src={data.previewUrl} onPlay={onPlay} />
+          <PlayPause
+            src={data.previewUrl}
+            onPlay={onPlay}
+            isPlaying={isPlaying}
+          />
         </If>
         <IfNot condition={data.previewUrl}>
           <span>-</span>

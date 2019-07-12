@@ -43,6 +43,7 @@ function Tracks({
                 data={track}
                 onPlay={setCurrentTrack}
                 skipColumns={skipColumns}
+                currentTrack={currentTrack}
               />
             </li>
           )

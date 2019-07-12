@@ -6,24 +6,11 @@ import { useState } from "react";
 interface Props {
   src: string;
   onPlay: (src: string | null) => void;
+  isPlaying: boolean;
 }
 
-function toggle(state: boolean, callback: (state: boolean) => void): boolean {
-  const newState = !state;
-  callback(newState);
-
-  return newState;
-}
-
-function PlayPause({ src, onPlay }: Props): JSX.Element {
-  const [playing, setIsPlaying] = useState(false);
-
-  const callback = (state: boolean): void => {
-    setIsPlaying(state);
-    onPlay(state ? src : null);
-  };
-
-  const className = playing ? styles.pause : styles.play;
+function PlayPause({ src, onPlay, isPlaying }: Props): JSX.Element {
+  const className = isPlaying ? styles.pause : styles.play;
 
   return (
     <>
@@ -31,7 +18,8 @@ function PlayPause({ src, onPlay }: Props): JSX.Element {
         data-src={src}
         className={styles.box}
         onClick={(): void => {
-          toggle(playing, callback);
+          const track = isPlaying ? null : src;
+          onPlay(track);
         }}
       >
         <span className={`${styles.button} ${className}`}></span>
