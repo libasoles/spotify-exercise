@@ -5,6 +5,8 @@
   --lineColor: #bdc5cb;
   transition: all 1s linear;
   animation: fadein 3s;
+  max-width: 450px;
+  margin: 0 auto;
 }
 
 .container.pink {

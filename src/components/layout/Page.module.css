@@ -4,3 +4,8 @@
   display: flex;
   justify-content: center;
 }
+
+.main {
+  display: block;
+  min-width: 100%;
+}

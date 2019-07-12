@@ -33,9 +33,11 @@ function Track({ data, onPlay, skipColumns }: Props): JSX.Element {
         </li>
       </If>
 
-      <li className={`${styles.column} ${styles.noMobile}`}>
-        {data.album.name}
-      </li>
+      <If condition={!(skipColumns && skipColumns.includes("album"))}>
+        <li className={`${styles.column} ${styles.noMobile}`}>
+          <Link to={`/album/${data.album.id}`}>{data.album.name}</Link>
+        </li>
+      </If>
 
       <li className={`${styles.column} ${styles.right} ${styles.small}`}>
         {millisToTime(data.duration_ms)}

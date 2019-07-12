@@ -10,7 +10,7 @@ interface Props {
 function Page({ children, className }: Props): JSX.Element {
   return (
     <div className={`${styles.page} ${className}`}>
-      <main>{children}</main>
+      <main className={styles.main}>{children}</main>
     </div>
   );
 }

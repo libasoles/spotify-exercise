@@ -1,6 +1,12 @@
 import { ArtistData } from "../types/ArtistData";
 import config from "../config/index";
 
+export const emptyArtist: ArtistData = {
+    id: "",
+    name: "",
+    images: [{ url: "" }],
+};
+
 function filterImages(images: any[]) {
   return images.filter(
     (image: { width: number }) =>
