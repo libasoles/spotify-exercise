@@ -1,7 +1,6 @@
 import React from "react";
 
 import Page from "../components/layout/Page";
-import { AlbumData } from "../types/AlbumData";
 import { RouteComponentProps } from "react-router";
 import Picture from "../components/Picture";
 import If, { IfNot } from "../components/If";
@@ -12,14 +11,12 @@ import useFetchAlbum from "./Album/useFetchAlbum";
 import { ArtistData } from "../types/ArtistData";
 import Link from "../components/layout/Link";
 
-interface Props {
-  data: AlbumData;
+interface URIParams {
+  id: string;
 }
+type Parameters = RouteComponentProps<URIParams>;
 
-type URIParams = { id: string };
-type Parameters = Props & RouteComponentProps<URIParams>;
-
-function Album({ data, match }: Parameters): JSX.Element {
+function Album({ match }: Parameters): JSX.Element {
   const { id } = match.params;
   const album = useFetchAlbum({ id });
 
@@ -39,9 +36,13 @@ function Album({ data, match }: Parameters): JSX.Element {
             <hgroup>
               <h1 className={styles.name}>{album.name}</h1>
               <h2 className={styles.artists}>
-                {artists.map((artist: ArtistData) => (
-                  <Link to={`/artist/${artist.id}`}>{artist.name}</Link>
-                ))}
+                {artists.map(
+                  (artist: ArtistData): JSX.Element => (
+                    <Link key={artist.id} to={`/artist/${artist.id}`}>
+                      {artist.name}
+                    </Link>
+                  )
+                )}
               </h2>
             </hgroup>
           </section>

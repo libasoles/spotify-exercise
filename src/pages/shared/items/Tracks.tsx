@@ -14,7 +14,7 @@ interface Props {
   className?: string;
 }
 
-function useAutoPlay(currentTrack: string | null) {
+function useAutoPlay(currentTrack: string | null): void {
   const audio = useRef(new Player());
   if (currentTrack) {
     audio.current.play(currentTrack);
@@ -36,15 +36,17 @@ function Tracks({
     <section className={`${styles.container} ${className}`}>
       <Title>{title}</Title>
       <ul className={styles.list}>
-        {list.map((track: TrackData) => (
-          <li key={track.id} className={styles.row}>
-            <Track
-              data={track}
-              onPlay={setCurrentTrack}
-              skipColumns={skipColumns}
-            />
-          </li>
-        ))}
+        {list.map(
+          (track: TrackData): JSX.Element => (
+            <li key={track.id} className={styles.row}>
+              <Track
+                data={track}
+                onPlay={setCurrentTrack}
+                skipColumns={skipColumns}
+              />
+            </li>
+          )
+        )}
       </ul>
     </section>
   );

@@ -17,7 +17,7 @@ function serializeAlbum(album: any): AlbumData {
     id: album.id,
     name: album.name,
     images: album.images.filter(
-      (image: { width: number }) =>
+      (image: { width: number }): boolean =>
         image.width >= config.mimImageSize && image.width <= config.maxImageSize
     ),
     tracks: hasTracks ? serializeTracks(album.tracks.items) : [],

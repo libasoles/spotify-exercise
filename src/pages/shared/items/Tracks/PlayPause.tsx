@@ -8,7 +8,7 @@ interface Props {
   onPlay: (src: string | null) => void;
 }
 
-function toggle(state: boolean, callback: (state: boolean) => void) {
+function toggle(state: boolean, callback: (state: boolean) => void): boolean {
   const newState = !state;
   callback(newState);
 
@@ -18,7 +18,7 @@ function toggle(state: boolean, callback: (state: boolean) => void) {
 function PlayPause({ src, onPlay }: Props): JSX.Element {
   const [playing, setIsPlaying] = useState(false);
 
-  const callback = (state: boolean) => {
+  const callback = (state: boolean): void => {
     setIsPlaying(state);
     onPlay(state ? src : null);
   };
@@ -30,7 +30,9 @@ function PlayPause({ src, onPlay }: Props): JSX.Element {
       <button
         data-src={src}
         className={styles.box}
-        onClick={() => toggle(playing, callback)}
+        onClick={(): void => {
+          toggle(playing, callback);
+        }}
       >
         <span className={`${styles.button} ${className}`}></span>
       </button>

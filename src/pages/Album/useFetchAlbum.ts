@@ -3,18 +3,18 @@ import api from "../../services/api";
 import { emptyAlbum, serializeAlbum } from "../../serializers/album";
 import { AlbumData } from "../../types/AlbumData";
 
-interface useFetchAlbumsParams {
+interface Params {
   id: string;
   fetch?: any;
 }
 
 const defaultInfo: AlbumData = emptyAlbum;
 
-function useFetchAlbum({ id, fetch = api }: useFetchAlbumsParams) {
+function useFetchAlbum({ id, fetch = api }: Params): AlbumData {
   const [album, setAlbum] = useState(defaultInfo);
 
-  useEffect(() => {
-    fetch.get("/albums/" + id).then(({ data }: { data: any }) => {
+  useEffect((): void => {
+    fetch.get("/albums/" + id).then(({ data }: { data: any }): void => {
       const album = serializeAlbum(data);
 
       setAlbum(album);

@@ -3,21 +3,24 @@ import api from "../../services/api";
 import { serializeAlbums } from "../../serializers/album";
 import { AlbumData } from "../../types/AlbumData";
 
-interface useFetchAlbumsParams {
+interface Params {
   id: string;
   fetch?: any;
 }
 
 const initialState: AlbumData[] = [];
 
-function useFetchAlbums({ id, fetch = api }: useFetchAlbumsParams) {
+function useFetchAlbums({ id, fetch = api }: Params): AlbumData[] {
   const [albums, setAlbums] = useState(initialState);
 
-  useEffect(() => {
-    fetch.get("/artists/" + id + "/albums").then(({ data }: { data: any }) => {
-      const albums = serializeAlbums(data.items);
-      setAlbums(albums);
-    });
+  useEffect((): void => {
+    fetch
+      .get("/artists/" + id + "/albums")
+      .then(({ data }: { data: any }): void => {
+        const albums = serializeAlbums(data.items);
+
+        setAlbums(albums);
+      });
   }, [id, fetch]);
 
   return albums;

@@ -1,3 +1,3 @@
 /// <reference types="react-scripts" />
 
-declare module 'react-masonry-css';
+declare module "react-masonry-css";

@@ -25,7 +25,7 @@ function Home(): JSX.Element {
       </If>
 
       <If condition={!loading && hasArtists}>
-        <Tracks list={tracks} className={styles.tracks}/>
+        <Tracks list={tracks} className={styles.tracks} />
         <Artists list={artists} />
       </If>
 

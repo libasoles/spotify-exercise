@@ -5,13 +5,13 @@ class Player {
     this.audio = new AudioPlayer();
   }
 
-  play(src: string) {
+  play(src: string): void {
     this.audio.pause();
     this.audio.setAttribute("src", src);
     this.audio.play();
   }
 
-  stop() {
+  stop(): void {
     this.audio.pause();
   }
 }

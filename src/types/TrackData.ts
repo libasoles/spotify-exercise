@@ -6,6 +6,6 @@ export interface TrackData {
   name: string;
   artists: ArtistData[];
   album: AlbumData;
-  duration_ms: number;
-  preview_url: string;
+  durationMs: number;
+  previewUrl: string;
 }

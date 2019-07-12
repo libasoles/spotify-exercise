@@ -18,10 +18,10 @@ function Track({ data, onPlay, skipColumns }: Props): JSX.Element {
   return (
     <ul className={styles.row}>
       <li className={`${styles.column} ${styles.button} ${styles.small}`}>
-        <If condition={data.preview_url}>
-          <PlayPause src={data.preview_url} onPlay={onPlay} />
+        <If condition={data.previewUrl}>
+          <PlayPause src={data.previewUrl} onPlay={onPlay} />
         </If>
-        <IfNot condition={data.preview_url}>
+        <IfNot condition={data.previewUrl}>
           <span>-</span>
         </IfNot>
       </li>
@@ -30,11 +30,13 @@ function Track({ data, onPlay, skipColumns }: Props): JSX.Element {
 
       <If condition={!(skipColumns && skipColumns.includes("artists"))}>
         <li className={styles.column}>
-          {data.artists.map((artist: ArtistData) => (
-            <Link key={artist.id} to={`/artist/${artist.id}`}>
-              {artist.name}
-            </Link>
-          ))}
+          {data.artists.map(
+            (artist: ArtistData): JSX.Element => (
+              <Link key={artist.id} to={`/artist/${artist.id}`}>
+                {artist.name}
+              </Link>
+            )
+          )}
         </li>
       </If>
 
@@ -45,7 +47,7 @@ function Track({ data, onPlay, skipColumns }: Props): JSX.Element {
       </If>
 
       <li className={`${styles.column} ${styles.right} ${styles.small}`}>
-        {millisToTime(data.duration_ms)}
+        {millisToTime(data.durationMs)}
       </li>
     </ul>
   );

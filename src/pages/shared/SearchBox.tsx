@@ -7,12 +7,12 @@ interface Props {
   onSearch: (term: string) => void;
 }
 
-function noAction(e: FormEvent) {
+function noAction(e: FormEvent): void {
   e.preventDefault();
 }
 
 function SearchBox({ onSearch }: Props): JSX.Element {
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     e.preventDefault();
     onSearch(e.target.value);
   };

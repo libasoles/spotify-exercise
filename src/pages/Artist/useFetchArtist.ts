@@ -3,18 +3,18 @@ import api from "../../services/api";
 import { emptyArtist, serializeArtist } from "../../serializers/artists";
 import { ArtistData } from "../../types/ArtistData";
 
-interface useFetchArtistParams {
+interface Params {
   id: string;
   fetch?: any;
 }
 
 const defaultInfo: ArtistData = emptyArtist;
 
-function useFetchArtist({ id, fetch = api }: useFetchArtistParams) {
+function useFetchArtist({ id, fetch = api }: Params): ArtistData {
   const [artist, setArtist] = useState(defaultInfo);
 
-  useEffect(() => {
-    fetch.get("/artists/" + id).then(({ data }: { data: any }) => {
+  useEffect((): void => {
+    fetch.get("/artists/" + id).then(({ data }: { data: any }): void => {
       const artist = serializeArtist(data);
 
       setArtist(artist);

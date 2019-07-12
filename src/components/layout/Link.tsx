@@ -8,7 +8,7 @@ interface Props {
   className?: string;
 }
 
-function Link({ to = '/', children, className }: Props): JSX.Element {
+function Link({ to = "/", children, className }: Props): JSX.Element {
   return (
     <a href={to} className={`${styles.link} ${className}`}>
       {children}

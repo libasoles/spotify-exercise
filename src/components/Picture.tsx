@@ -8,7 +8,7 @@ interface Props {
   caption?: string;
 }
 
-export default function Picture({ src, alt, caption }: Props) {
+export default function Picture({ src, alt, caption }: Props): JSX.Element {
   return (
     <figure className={styles.picture}>
       <img src={src} alt={alt} />

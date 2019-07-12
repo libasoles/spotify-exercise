@@ -11,7 +11,7 @@ const api = axios.create({
 });
 
 function setToken(token: string, client: any = api): void {
-  client.interceptors.request.use(function(config: any) {
+  client.interceptors.request.use(function(config: any): any {
     config.headers.Authorization = token ? `Bearer ${token}` : "";
 
     return config;

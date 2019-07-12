@@ -13,7 +13,7 @@ interface Props {
   copy: string;
 }
 
-const Ufo = ({ color = Color.blue, copy }: Props) => (
+const Ufo = ({ color = Color.blue, copy }: Props): JSX.Element => (
   <div className={`${styles.container} ${styles[color]}`}>
     <img src={ufo} className={styles.ufo} alt="ufo" />
     <div className={styles.loader}>

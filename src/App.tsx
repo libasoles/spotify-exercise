@@ -1,6 +1,5 @@
 import React from "react";
 
-
 import "normalize.css";
 import "./App.css";
 import Header from "./pages/shared/Header";

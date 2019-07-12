@@ -2,14 +2,14 @@ import { ArtistData } from "../types/ArtistData";
 import config from "../config/index";
 
 export const emptyArtist: ArtistData = {
-    id: "",
-    name: "",
-    images: [{ url: "" }],
+  id: "",
+  name: "",
+  images: [{ url: "" }],
 };
 
-function filterImages(images: any[]) {
+function filterImages(images: any[]): any[] {
   return images.filter(
-    (image: { width: number }) =>
+    (image: { width: number }): boolean =>
       image.width >= config.mimImageSize && image.width <= config.maxImageSize
   );
 }

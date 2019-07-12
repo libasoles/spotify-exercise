@@ -1,7 +1,6 @@
 import React from "react";
 
 import Page from "../components/layout/Page";
-import { ArtistData } from "../types/ArtistData";
 import useFetchArtist from "./Artist/useFetchArtist";
 import { RouteComponentProps } from "react-router";
 import useFetchAlbums from "./Artist/useFetchAlbums";
@@ -13,14 +12,12 @@ import useFetchTopTracks from "./Artist/useFetchTopTracks";
 import Tracks from "./shared/items/Tracks";
 import styles from "./Artist.module.css";
 
-interface Props {
-  data: ArtistData;
+interface URIParams {
+  id: string;
 }
+type Parameters = RouteComponentProps<URIParams>;
 
-type URIParams = { id: string };
-type Parameters = Props & RouteComponentProps<URIParams>;
-
-function Artist({ data, match }: Parameters): JSX.Element {
+function Artist({ match }: Parameters): JSX.Element {
   const { id } = match.params;
   const artist = useFetchArtist({ id });
   const tracks = useFetchTopTracks({ id });

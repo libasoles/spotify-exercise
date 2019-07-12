@@ -7,34 +7,43 @@ import useDebounce from "../../services/useDebounce";
 import { serializeTracks } from "../../serializers/track";
 import { TrackData } from "../../types/TrackData";
 
-interface initialStateShape {
+interface InitialStateShape {
   artists: ArtistData[];
   tracks: TrackData[];
 }
 
-const initialState: initialStateShape = {
+const initialState: InitialStateShape = {
   artists: [],
   tracks: [],
 };
 
-interface useSearchParams {
+interface Params {
   fetch?: any;
   serializeArtistsData?: (items: []) => ArtistData[];
 }
 
-function useSearch({ fetch = api }: useSearchParams) {
+interface Response {
+  loading: boolean;
+  results: {
+    artists: ArtistData[];
+    tracks: TrackData[];
+  };
+  searchTerm: (term: string) => void;
+}
+
+function useSearch({ fetch = api }: Params): Response {
   const [term, search] = useState("");
   const [results, setResults] = useState(initialState);
   const [loading, setLoading] = useState(false);
 
   const debouncedTerm = useDebounce(term, 500);
 
-  const searchTerm = (term: string) => {
+  const searchTerm = (term: string): void => {
     setLoading(true);
     search(term);
   };
 
-  useEffect(() => {
+  useEffect((): void => {
     if (!debouncedTerm) {
       setResults(initialState);
       setLoading(false);
@@ -48,7 +57,7 @@ function useSearch({ fetch = api }: useSearchParams) {
           type: "artist,track",
         },
       })
-      .then(({ data }: { data: any }) => {
+      .then(({ data }: { data: any }): void => {
         const artists = serializeArtists(data.artists.items);
         const tracks = serializeTracks(data.tracks.items, true);
 
