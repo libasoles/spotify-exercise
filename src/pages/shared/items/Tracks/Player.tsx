@@ -1,17 +1,17 @@
 class Player {
   private audio: HTMLAudioElement;
 
-  constructor(AudioPlayer = Audio) {
+  public constructor(AudioPlayer = Audio) {
     this.audio = new AudioPlayer();
   }
 
-  play(src: string): void {
+  public play(src: string): void {
     this.audio.pause();
     this.audio.setAttribute("src", src);
     this.audio.play();
   }
 
-  stop(): void {
+  public stop(): void {
     this.audio.pause();
   }
 }

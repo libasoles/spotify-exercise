@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosResponse } from "axios";
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
 import config from "../config/index";
 
@@ -10,14 +10,15 @@ const api = axios.create({
   },
 });
 
-function setToken(token: string, client: any = api): void {
-  client.interceptors.request.use(function(config: any): any {
+function setToken(token: string, client: ApiInstance = api): void {
+  client.interceptors.request.use(function(config: ApiConfig): ApiConfig {
     config.headers.Authorization = token ? `Bearer ${token}` : "";
 
     return config;
   });
 }
 
+export type ApiConfig = AxiosRequestConfig;
 export type ApiResponse = AxiosResponse;
 export type ApiInstance = AxiosInstance;
 
