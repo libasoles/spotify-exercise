@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import api from "../../services/api";
+import api, { ApiInstance, ApiResponse } from "../../services/api";
 import { serializeAlbums } from "../../serializers/album";
 import { AlbumData } from "../../types/AlbumData";
 
 interface Params {
   id: string;
-  fetch?: any;
+  fetch?: ApiInstance;
 }
 
 const initialState: AlbumData[] = [];
@@ -16,7 +16,7 @@ function useFetchAlbums({ id, fetch = api }: Params): AlbumData[] {
   useEffect((): void => {
     fetch
       .get("/artists/" + id + "/albums")
-      .then(({ data }: { data: any }): void => {
+      .then(({ data }: ApiResponse): void => {
         const albums = serializeAlbums(data.items);
 
         setAlbums(albums);

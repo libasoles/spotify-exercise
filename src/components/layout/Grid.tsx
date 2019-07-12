@@ -1,14 +1,14 @@
 import * as React from "react";
 import Masonry from "react-masonry-css";
-import { GridRecipientType } from "./ItemsGrid";
+import { RecipientType } from "./ItemsGrid";
 import styles from "./Grid.module.css";
 
-interface Props {
-  list: any;
-  recipient: GridRecipientType;
+interface Props<T> {
+  list: T[];
+  recipient: RecipientType<T>;
 }
 
-function Grid<T>({ list, recipient }: Props): JSX.Element {
+function Grid<T>({ list, recipient }: Props<T>): JSX.Element {
   const masonryColumns = {
     default: 5,
     1100: 2,

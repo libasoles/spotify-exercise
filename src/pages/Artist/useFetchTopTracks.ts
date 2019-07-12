@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import api from "../../services/api";
+import api, { ApiInstance, ApiResponse } from "../../services/api";
 import { serializeTracks } from "../../serializers/track";
 import { TrackData } from "../../types/TrackData";
 
 interface Params {
   id: string;
-  fetch?: any;
+  fetch?: ApiInstance;
 }
 
 const country = navigator.language.slice(-2) || "US";
@@ -22,7 +22,7 @@ function useFetchTopTracks({ id, fetch = api }: Params): TrackData[] {
           country,
         },
       })
-      .then(({ data }: { data: any }): void => {
+      .then(({ data }: ApiResponse): void => {
         const tracks = serializeTracks(data.tracks);
 
         setTracks(tracks);

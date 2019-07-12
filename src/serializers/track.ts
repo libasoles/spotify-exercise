@@ -1,8 +1,8 @@
-import { TrackData } from "../types/TrackData";
+import { TrackAlienData, TrackData } from "../types/TrackData";
 import { emptyAlbum, serializeAlbum } from "./album";
 import { serializeArtist } from "./artists";
 
-function serializeTrack(track: any): TrackData {
+function serializeTrack(track: TrackAlienData): TrackData {
   const hasAlbum = typeof track.album !== "undefined";
 
   return {
@@ -15,9 +15,14 @@ function serializeTrack(track: any): TrackData {
   };
 }
 
-function serializeTracks(items: any, onlyPlayable = false): TrackData[] {
-    if (onlyPlayable)
-    items = items.filter((track: any): boolean => Boolean(track.preview_url));
+function serializeTracks(
+  items: TrackAlienData[],
+  onlyPlayable = false
+): TrackData[] {
+  if (onlyPlayable)
+    items = items.filter((track: TrackAlienData): boolean =>
+      Boolean(track.preview_url)
+    );
 
   return items.map(serializeTrack);
 }

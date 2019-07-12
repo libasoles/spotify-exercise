@@ -6,17 +6,17 @@ import Link from "./Link";
 import If from "../If";
 import Grid from "./Grid";
 
-export type GridRecipientType = ({ data, className }: ItemProps) => JSX.Element;
-
-export interface ItemProps {
-  data: any;
+export interface RecipientProps<T> {
+  data: T;
   className: string;
 }
 
+export type RecipientType<T> = (props: RecipientProps<T>) => JSX.Element;
+
 interface Props<T> {
   title?: string;
-  list: T;
-  recipient: GridRecipientType;
+  list: T[];
+  recipient: RecipientType<T>;
   link?: { copy: string; to?: string };
 }
 

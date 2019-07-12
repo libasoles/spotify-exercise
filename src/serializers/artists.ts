@@ -1,5 +1,6 @@
-import { ArtistData } from "../types/ArtistData";
+import { ArtistAlienData, ArtistData } from "../types/ArtistData";
 import config from "../config/index";
+import { ImageAlienData } from "../types/ImageData";
 
 export const emptyArtist: ArtistData = {
   id: "",
@@ -7,14 +8,14 @@ export const emptyArtist: ArtistData = {
   images: [{ url: "" }],
 };
 
-function filterImages(images: any[]): any[] {
+function filterImages(images: ImageAlienData[]): ImageAlienData[] {
   return images.filter(
     (image: { width: number }): boolean =>
       image.width >= config.mimImageSize && image.width <= config.maxImageSize
   );
 }
 
-function serializeArtist(artist: any): ArtistData {
+function serializeArtist(artist: ArtistAlienData): ArtistData {
   return {
     id: artist.id,
     name: artist.name,
@@ -22,7 +23,7 @@ function serializeArtist(artist: any): ArtistData {
   };
 }
 
-function serializeArtists(items: any): ArtistData[] {
+function serializeArtists(items: ArtistAlienData[]): ArtistData[] {
   return items.map(serializeArtist);
 }
 

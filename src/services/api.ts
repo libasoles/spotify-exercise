@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosInstance, AxiosResponse } from "axios";
 
 import config from "../config/index";
 
@@ -17,6 +17,9 @@ function setToken(token: string, client: any = api): void {
     return config;
   });
 }
+
+export type ApiResponse = AxiosResponse;
+export type ApiInstance = AxiosInstance;
 
 export default api;
 export { setToken };

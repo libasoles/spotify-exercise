@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import api from "../../services/api";
+import api, { ApiInstance, ApiResponse } from "../../services/api";
 import { ArtistData } from "../../types/ArtistData";
 import { serializeArtists } from "../../serializers/artists";
 import useDebounce from "../../services/useDebounce";
@@ -18,7 +18,7 @@ const initialState: InitialStateShape = {
 };
 
 interface Params {
-  fetch?: any;
+  fetch?: ApiInstance;
   serializeArtistsData?: (items: []) => ArtistData[];
 }
 
@@ -57,7 +57,7 @@ function useSearch({ fetch = api }: Params): Response {
           type: "artist,track",
         },
       })
-      .then(({ data }: { data: any }): void => {
+      .then(({ data }: ApiResponse): void => {
         const artists = serializeArtists(data.artists.items);
         const tracks = serializeTracks(data.tracks.items, true);
 

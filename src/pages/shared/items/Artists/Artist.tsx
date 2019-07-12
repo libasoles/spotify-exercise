@@ -1,18 +1,15 @@
 import * as React from "react";
-import { ItemProps } from "../../../../components/layout/ItemsGrid";
+import { RecipientProps } from "../../../../components/layout/ItemsGrid";
 import { ArtistData } from "../../../../types/ArtistData";
 import noImage from "../../../../assets/NoImageFound.png";
 import Picture from "../../../../components/Picture";
 
-interface Props {
-  data: ArtistData;
-  className: string;
-}
+type Props = RecipientProps<ArtistData>;
 
-function Artist({ data, className }: ItemProps | Props): JSX.Element {
+function Artist({ data, className }: Props): JSX.Element {
   const { images } = data;
 
-  const image = images.length ? images[0].url : noImage;
+  const image = images && images.length ? images[0].url : noImage;
 
   return (
     <article className={className}>

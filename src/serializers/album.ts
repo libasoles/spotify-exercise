@@ -1,7 +1,8 @@
-import { AlbumData } from "../types/AlbumData";
+import { AlbumAlienData, AlbumData } from "../types/AlbumData";
 import config from "../config/index";
 import { serializeTracks } from "./track";
 import { serializeArtists } from "./artists";
+import { ImageAlienData } from "../types/ImageData";
 
 export const emptyAlbum: AlbumData = {
   id: "",
@@ -9,7 +10,7 @@ export const emptyAlbum: AlbumData = {
   images: [{ url: "" }],
 };
 
-function serializeAlbum(album: any): AlbumData {
+function serializeAlbum(album: AlbumAlienData): AlbumData {
   const hasTracks = album.tracks && album.tracks.items.length > 0;
   const hasArtists = album.artists && album.artists.length > 0;
 
@@ -17,7 +18,7 @@ function serializeAlbum(album: any): AlbumData {
     id: album.id,
     name: album.name,
     images: album.images.filter(
-      (image: { width: number }): boolean =>
+      (image: ImageAlienData): boolean =>
         image.width >= config.mimImageSize && image.width <= config.maxImageSize
     ),
     tracks: hasTracks ? serializeTracks(album.tracks.items) : [],
@@ -25,7 +26,7 @@ function serializeAlbum(album: any): AlbumData {
   };
 }
 
-function serializeAlbums(items: any): AlbumData[] {
+function serializeAlbums(items: AlbumAlienData[]): AlbumData[] {
   return items.map(serializeAlbum);
 }
 
