@@ -24,8 +24,7 @@
   },
   "husky": {
     "hooks": {
-      "precommit": "lint-staged",
-      "pre-push": "npm test"
+      "precommit": "lint-staged"
     }
   },
   "eslintConfig": {

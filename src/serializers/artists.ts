@@ -1,5 +1,5 @@
 import { ArtistData } from "../types/ArtistData";
-import config from "../config";
+import config from "../config/index";
 
 function filterImages(images: any[]) {
   return images.filter(

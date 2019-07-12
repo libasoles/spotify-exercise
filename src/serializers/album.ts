@@ -1,5 +1,5 @@
 import { AlbumData } from "../types/AlbumData";
-import config from "../config";
+import config from "../config/index";
 
 function serializeAlbum(album: any): AlbumData {
   return {

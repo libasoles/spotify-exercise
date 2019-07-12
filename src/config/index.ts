@@ -1,4 +1,4 @@
-// as (this is a demo and) we are calling the API client side, we need a proxy
+// As (this is a demo and) we are calling the API client side, we need a proxy (because of CORS issue)
 const proxy = "https://cors-anywhere.herokuapp.com";
 
 export default {

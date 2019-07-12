@@ -14,7 +14,7 @@ Running on node 10.15
 
 ## Credentials
 
-You will need a Bearer accessToken to run the demo. Set it in config.ts
+You will need a Bearer accessToken to run the demo. Set it in config/index.ts
 
 This is because the demo doesn't include an authentication process.
 
