@@ -6,7 +6,12 @@ It's a demo project using _Spotify_ API.
 - React 16.8 w/hooks
 - typescript
 - prettier + eslint
-- css3 Masonry layout and animations (and no framework)
+- modular css (and no framework)
+
+### Features
+- Masonry layout
+- Debounced search
+- Real audio (html5)
 
 Running on node 10.15
 
@@ -42,7 +47,3 @@ Finally
 ## Demo
 
 ![Demo](https://github.com/libasoles/spotify-exercise/blob/master/screenShots/FullscreeDemo.gif)
-
-## Whishlist
-
-- back button
