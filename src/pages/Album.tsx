@@ -10,6 +10,7 @@ import styles from "./Album.module.css";
 import useFetchAlbum from "./Album/useFetchAlbum";
 import { ArtistData } from "../types/ArtistData";
 import Link from "../components/layout/Link";
+import BackButtonBar from "../components/layout/BackButtonBar";
 
 interface URIParams {
   id: string;
@@ -27,13 +28,16 @@ function Album({ match }: Parameters): JSX.Element {
 
   return (
     <Page>
-      <div>
+      <header>
+        <BackButtonBar />
+      </header>
+      <section>
         <header className={styles.header}>
           <section className={styles.details}>
             <If condition={image}>
               <Picture src={image} alt={album.name} />
             </If>
-            <hgroup>
+            <>
               <h1 className={styles.name}>{album.name}</h1>
               <h2 className={styles.artists}>
                 {artists.map(
@@ -44,7 +48,7 @@ function Album({ match }: Parameters): JSX.Element {
                   )
                 )}
               </h2>
-            </hgroup>
+            </>
           </section>
 
           <section className={styles.tracks}>
@@ -60,7 +64,7 @@ function Album({ match }: Parameters): JSX.Element {
             </IfNot>
           </section>
         </header>
-      </div>
+      </section>
     </Page>
   );
 }

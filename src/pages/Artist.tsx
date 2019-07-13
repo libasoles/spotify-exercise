@@ -11,6 +11,7 @@ import Loading from "./shared/SearchBox/Loading";
 import useFetchTopTracks from "./Artist/useFetchTopTracks";
 import Tracks from "./shared/items/Tracks";
 import styles from "./Artist.module.css";
+import BackButtonBar from "../components/layout/BackButtonBar";
 
 interface URIParams {
   id: string;
@@ -29,7 +30,10 @@ function Artist({ match }: Parameters): JSX.Element {
 
   return (
     <Page>
-      <div>
+      <header>
+        <BackButtonBar />
+      </header>
+      <section>
         <header className={styles.header}>
           <section className={styles.details}>
             <If condition={image}>
@@ -56,7 +60,7 @@ function Artist({ match }: Parameters): JSX.Element {
         <IfNot condition={hasAlbums}>
           <Loading />
         </IfNot>
-      </div>
+      </section>
     </Page>
   );
 }
