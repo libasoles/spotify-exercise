@@ -6,7 +6,7 @@ It's a demo project using _Spotify_ API.
 - React 16.8 w/hooks
 - typescript
 - prettier + eslint
-- modular css (and no framework)
+- modular css (and flex, no framework)
 
 ### Features
 - Masonry layout
@@ -44,6 +44,8 @@ docker-compose exec spotifive yarn start
 Finally
 `docker-compose down`
 
-## Demo
+## Demos
 
 ![Demo](https://github.com/libasoles/spotify-exercise/blob/master/screenShots/FullscreeDemo.gif)
+
+![Demo](https://github.com/libasoles/spotify-exercise/blob/master/screenShots/CellPhoneDemo.gif)
