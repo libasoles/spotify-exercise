@@ -9,5 +9,3 @@ RUN npm install -g yarn@1.12
 RUN yarn install
 
 COPY . .
-
-RUN yarn
